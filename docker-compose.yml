@@ -8,7 +8,7 @@ logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
-    - ./logstash/config:/etc/logstash/conf.d
+    - $PWD/logstash/config:/etc/logstash/conf.d
   ports:
     - "5000:5000"
   links:
@@ -16,7 +16,7 @@ logstash:
 kibana:
   build: kibana/
   volumes:
-    - ./kibana/config/:/opt/kibana/config/
+    - $PWD/kibana/config/:/opt/kibana/config/
   ports:
     - "5601:5601"
   links:

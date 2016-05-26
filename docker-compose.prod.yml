@@ -1,0 +1,9 @@
+elasticsearch:
+  restart: unless-stopped
+  volumes:
+    - /var/vol/esdata:/usr/share/elasticsearch/data
+logstash:
+  restart: unless-stopped
+kibana:
+  restart: unless-stopped
+
