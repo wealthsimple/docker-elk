@@ -12,6 +12,7 @@ logstash:
   ports:
     - "5000:5000"
     - "5001:5001"
+    - "5010:5010"
   links:
     - elasticsearch
 kibana:
