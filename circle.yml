@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - echo -n $DOCKER_CERT_BZ2 | base64 -D | tar -tj -C $PWD/.docker-credentials
+    - export DOCKER_CERT_PATH="$PWD/.docker-credentials"
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - docker-compose ps
+#      - bash ./deploy.sh
