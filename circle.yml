@@ -12,6 +12,4 @@ deployment:
     commands:
       - mkdir -p $HOME/.docker/machine/machines/logging-docker/
       - echo -n $DOCKER_CERT_BZ2 | base64 --decode | tar -xj -C $HOME/.docker/machine/machines/logging-docker/
-      - ls -lihastr .
-      - echo $PWD
       - DOCKER_CERT_PATH=$HOME/.docker/machine/machines/logging-docker/ ./deploy.sh
