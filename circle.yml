@@ -4,12 +4,14 @@ machine:
 
 dependencies:
   pre:
-    - mkdir $PWD/.docker-credentials
-    - echo -n $DOCKER_CERT_BZ2 | base64 --decode | tar -tj -C $PWD/.docker-credentials
+    - curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > docker-machine && chmod +x docker-machine
 
 deployment:
   production:
     branch: master
     commands:
-      - docker-compose ps
-#      - bash ./deploy.sh
+      - mkdir -p $HOME/.docker/machine/machines/logging-docker/
+      - echo -n $DOCKER_CERT_BZ2 | base64 --decode | tar -xj -C $HOME/.docker/machine/machines/logging-docker/
+      - ls -lihastr .
+      - echo $PWD
+      - DOCKER_CERT_PATH=$HOME/.docker/machine/machines/logging-docker/ ./deploy.sh
