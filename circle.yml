@@ -6,7 +6,6 @@ dependencies:
   pre:
     - mkdir $PWD/.docker-credentials
     - echo -n $DOCKER_CERT_BZ2 | base64 --decode | tar -tj -C $PWD/.docker-credentials
-    - export DOCKER_CERT_PATH="$PWD/.docker-credentials"
 
 deployment:
   production:
