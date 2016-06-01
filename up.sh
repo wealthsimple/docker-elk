@@ -12,5 +12,5 @@ docker-machine ssh logging-docker "sudo mkdir -p /var/vol && sudo mount /dev/xvd
 
 
 docker-machine scp -r . logging-docker:$PROJECT # Copy "docker-elk" files to "logging-docker". Deploys new version
-PWD=/home/ubuntu/$PROJECT/ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d # Magic
+PWD=/home/ubuntu/$PROJECT/ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --force-recreate # Magic
 docker-compose logs -f # Check that everything is fine (green log lines)
